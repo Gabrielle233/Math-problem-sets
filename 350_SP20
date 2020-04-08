@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+
+\onehalfspacing
+\topmargin -.7in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 6.6in
+
+\begin{document}
+
+% ========== Edit your name here
+\author{Gabrielle Li}
+\title{MATH 350 Functional Analysis: Problem set 6}
+\date{Due 04/07/2020}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+Part I: Quick(er) questions
+\begin{enumerate}
+\item Prove that the Baire Category Theorem does not hold in $\mathbb{Q}$ equipped with the standard Euclidean metric $d(x, y) = \vert x$ - $y \vert $.
+\begin{proof}
+We will find find an example to show that Baire Category Theorem fails to hold in $\mathbb{Q}$. Since $\mathbb{Q}$ is countable, so let $\{q_{n}: n = 1, 2, 3... \}$ be the enumeration of $\mathbb{Q}$. Let $Q_{n}$ = $\{q_{i}: i > n\}$. Note that since $\mathbb{Q}$ is dense in itself, after removing any finite subset of $\mathbb{Q}$ we still have a dense subset. Therefore, each of the $Q_{n}$ is dense and we have that $Q_{1} \supset Q_{2} \supset Q_{3} \supset... $ is a decreasing chain. Therefore, the intersection of all the $Q_{n}$'s is empty.
+\end{proof}
+\end{enumerate}
+\bigskip
+
+Part II: Proofs
+\begin{enumerate}
+\item Suppose that $f: \mathbb{R}^{+} \rightarrow \mathbb{R}$ is a continuous function such that $\lim_{n \to \infty} f(nx)$ = 0 for all x $>$ 0. Show that $\lim_{x \to \infty} f(x)$ = 0.
+\begin{proof}
+Given any $\epsilon > 0$. We start by define $S_{n} = \{x \in \mathbb{R}^{+}:  \vert f(nx)\vert\ \leq \epsilon /2\}$. Since each $S_{n}$ is the pre-image of a compact set under continuous function $f$, each $S_{n}$ is closed. Let $F_{n}$ =  $\bigcap^{\infty}_{i=n}X_{i}$ = $\{x \in \mathbb{R}^{+}: \vert f(kx)\vert\ \leq \epsilon /2$ for k $\geq n\}$. By hypothesis, we know that for any x $>$ 0, there exists some $N_{x}$ such that when n $\geq$ $N_{x}$ we have $\vert f(nx) \vert < \epsilon /2$. Therefore, any x $\in \mathbb{R}^{+}$ is in in some $F_{n_{x}}$, so $\mathbb{R}^{+}$ = $\bigcup^{\infty}_{i=n}F_{i}$. Since intersection of closed sets is closed, by Baire Category Theorem, for some n we know that $F_{n}$ has non-empty interior so there exists an interval (a, b) $\in F_{n}$, i.e. for all x $\in$ (a, b), we have $\vert f(kx)\vert \leq \epsilon/2$ for k $\geq$ n. That is to say, for x $\in$ $(na, nb)$ $\bigcup$ $((n + 1)a, (n + 1)b)$ $\bigcup$ $((n + 2)a, (n + 2)b)$..., we have $\vert f(x)\vert \leq \epsilon /2$. Observe that the ray ($na, \infty$) is contained in the union of all the intervals. Let M = $na$, so when x $>$ M, we have that $\vert f(x)\vert \leq \epsilon /2 < \epsilon$, implying that $\lim_{x \to \infty} f(x)$ = 0.
+\end{proof}
+\newpage
+
+\item 
+\begin{enumerate}
+\item Let (X, $\vert\vert \cdot \vert\vert$) be a normed space and let Y be a proper subspace of X. Prove that Y has no interior.
+\begin{proof}
+We will show that if Y is a subspace of X with non-empty interior, then Y = X. Supposed there exists a ball $B(x, r) \in$ Y. For any z $\in$ Z, let $y = x + \frac{r}{2\vert\vert z \vert\vert}z$, then we know that since $\vert\vert\-y - x\-\vert\vert$ = $\vert\vert \frac{r}{2\vert\vert z \vert\vert}z \vert\vert \leq \vert\vert \frac{r}{2\vert\vert z \vert\vert}\vert\vert \cdot \vert\vert z \vert\vert < r$, then $y \in B(x, r)$. By closure of subspace under addition and scalar multiplication, then z = $\frac{2\vert\vert z \vert\vert}{r}$ $(y - x)$ is in Y. As z is arbitrarily picked, we conclude that Y = X. Therefore, a proper subspace of X has empty interior. 
+\end{proof}
+
+\item Prove that the dimension of any Banach space is either finite or uncountably infinite. You may use the fact that every finite dimensional subspace is closed.
+\begin{proof}
+Let X be a Banach space. If X is of finite dimension, then we are done. Otherwise, we want to show that X is of uncountably infinite dimension. Toward a contradiction, suppose that X is of countably finite dimension. Let $\{{v_{n} \in X: n \in \mathbb{N}\}$ be a countable collection of basis elements of X. Let $X_{n}$ denote the span of the subcollection \{${v_{1}, ..., {v_{n}$\}. We know that each $X_{n}$ is proper subspace of X; therefore, each $X_{n}$ has empty interior by (a). We also know that each $X_{n}$ is a finite dimensional subspace, then each $X_{n}$ is closed. Hence, we can conclude that each $X_{n}$ is nowhere dense in X. We also have that X = $\bigcup^{\infty}_{n=1}X_{n}$ so it is the union of countably many closed sets. Baire Category Theorem implies that one of the $X_{n}$ has non-empty interior (contradiction). Therefore, we know that such countable collection of basis elements does not exist, so X is of uncountably infinite dimension. 
+\end{proof}
+
+\item Let X be the real vector space of real sequences $a = (a_{1}, a_{2}, . . .)$ such that only finitely many components of a are nonzero. Prove that there is no norm $\vert\vert \cdot \vert\vert$ on X for which (X, $\vert\vert \cdot \vert\vert$) is complete.
+\begin{proof}
+We proved in (b) that any Banach space is of either finite or uncountably infinite dimension. The contrapositive statement is that if X is of countable dimension, then X cannot be equipped with a complete norm. It suffices to show that X is of countable dimension, which is true because the collection $\{v_{1} = (1, 0, 0, 0...), v_{2} = (0, 1, 0, 0...), v_{3} = (0, 0, 1, 0...)...\}$ is a countable basis of X. Therefore, we know that X is of countable dimension, so there is no norm on X to make it a complete space. 
+\end{proof}
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
